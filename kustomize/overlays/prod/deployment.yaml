@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    spec:
+      containers:
+      - name: nginx
+        resources:
+          requests:
+            cpu: 200m
+            memory: "256M"
+          limits:
+            cpu: '1'
+            memory: "1024M"
